@@ -46,7 +46,7 @@ VantComponent({
     }
   },
   methods: {
-    onClick: function onClick() {
+    onClick: function onClick(e) {
       const formId = e.detail.formId;
 
       bougie.trigger({
