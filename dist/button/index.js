@@ -1,6 +1,7 @@
 import { VantComponent } from '../common/component';
 import { button } from '../mixins/button';
 import { openType } from '../mixins/open-type';
+import bougie from '../../../components/yt-bougie/bougie'
 VantComponent({
   classes: ['loading-class'],
   mixins: [button, openType],
@@ -18,7 +19,9 @@ VantComponent({
     size: {
       type: String,
       value: 'normal'
-    }
+    },
+    bougieType: String,
+    targetUserId: String
   },
   computed: {
     classes: function classes() {
@@ -44,6 +47,14 @@ VantComponent({
   },
   methods: {
     onClick: function onClick() {
+      const formId = e.detail.formId;
+
+      bougie.trigger({
+        formId: formId,
+        type: this.data.bougieType,
+        targetUserId: this.data.targetUserId,
+      });
+
       if (!this.data.disabled && !this.data.loading) {
         this.$emit('click');
       }
