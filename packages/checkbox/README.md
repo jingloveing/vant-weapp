@@ -1,7 +1,7 @@
 ## Checkbox 复选框
 
 ### 使用指南
-在 index.json 中引入组件
+在 app.json 或 index.json 中引入组件
 ```json
 "usingComponents": {
   "van-checkbox": "path/to/vant-weapp/dist/checkbox/index",
@@ -115,7 +115,7 @@ Page({
       data-name="{{ item }}"
       bind:click="toggle"
     >
-      <van-checkbox class="checkboxes-{{ item }}" name="{{ item }}" />
+      <van-checkbox catch:tap="noop" class="checkboxes-{{ item }}" name="{{ item }}" />
     </van-cell>
   </van-cell-group>
 </van-checkbox-group>
@@ -138,7 +138,9 @@ Page({
     const { name } = event.currentTarget.dataset;
     const checkbox = this.selectComponent(`.checkboxes-${name}`);
     checkbox.toggle();
-  }
+  },
+
+  noop() {}
 });
 ```
 
